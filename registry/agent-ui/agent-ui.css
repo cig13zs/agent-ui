@@ -1,0 +1,32 @@
+/* Keyframes used by agent-ui components. `npx shadcn add` merges these into
+   your CSS file; copy them by hand if you paste the components instead. */
+@keyframes agent-ui-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+@keyframes agent-ui-shimmer {
+  from {
+    background-position: 150% 0;
+  }
+  to {
+    background-position: -50% 0;
+  }
+}
+@keyframes agent-ui-fill {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+@keyframes agent-ui-indeterminate {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(300%);
+  }
+}
