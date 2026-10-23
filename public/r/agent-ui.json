@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "agent-ui",
+  "title": "agent-ui (everything)",
+  "author": "jju1s <https://github.com/cig13zs>",
+  "description": "All six components and the useAgentRun hook.",
+  "registryDependencies": [
+    "https://cig13zs.github.io/agent-ui/r/agent-run-card.json",
+    "https://cig13zs.github.io/agent-ui/r/tool-timeline.json",
+    "https://cig13zs.github.io/agent-ui/r/approval-prompt.json",
+    "https://cig13zs.github.io/agent-ui/r/subagent-tree.json",
+    "https://cig13zs.github.io/agent-ui/r/usage-meter.json",
+    "https://cig13zs.github.io/agent-ui/r/diff-summary.json",
+    "https://cig13zs.github.io/agent-ui/r/use-agent-run.json"
+  ],
+  "files": [],
+  "type": "registry:item"
+}

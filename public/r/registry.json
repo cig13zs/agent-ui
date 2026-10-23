@@ -1,0 +1,272 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "agent-ui",
+  "homepage": "https://cig13zs.github.io/agent-ui/",
+  "items": [
+    {
+      "name": "agent-run-card",
+      "type": "registry:component",
+      "title": "Agent Run Card",
+      "description": "Status card for one agent run: current step, live timer, model, segmented progress, finished steps and pause / stop / open controls.",
+      "author": "jju1s <https://github.com/cig13zs>",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/agent-ui/components/agent-run-card.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "css": {
+        "@keyframes agent-ui-in": {
+          "from": {
+            "opacity": "0",
+            "transform": "translateY(4px)"
+          }
+        },
+        "@keyframes agent-ui-shimmer": {
+          "from": {
+            "background-position": "150% 0"
+          },
+          "to": {
+            "background-position": "-50% 0"
+          }
+        },
+        "@keyframes agent-ui-fill": {
+          "from": {
+            "transform": "translateX(-100%)"
+          },
+          "to": {
+            "transform": "translateX(100%)"
+          }
+        },
+        "@keyframes agent-ui-indeterminate": {
+          "from": {
+            "transform": "translateX(-100%)"
+          },
+          "to": {
+            "transform": "translateX(300%)"
+          }
+        }
+      },
+      "categories": [
+        "agent"
+      ]
+    },
+    {
+      "name": "tool-timeline",
+      "type": "registry:component",
+      "title": "Tool Timeline",
+      "description": "Streaming list of tool calls with an icon per kind, live durations, expandable output and an error state.",
+      "author": "jju1s <https://github.com/cig13zs>",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/agent-ui/components/tool-timeline.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "css": {
+        "@keyframes agent-ui-in": {
+          "from": {
+            "opacity": "0",
+            "transform": "translateY(4px)"
+          }
+        }
+      },
+      "categories": [
+        "agent"
+      ]
+    },
+    {
+      "name": "approval-prompt",
+      "type": "registry:component",
+      "title": "Approval Prompt",
+      "description": "Asks the user to allow once, always allow or deny a command or edit, styled by risk level, with Y / A / N shortcuts.",
+      "author": "jju1s <https://github.com/cig13zs>",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/agent-ui/components/approval-prompt.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "css": {
+        "@keyframes agent-ui-in": {
+          "from": {
+            "opacity": "0",
+            "transform": "translateY(4px)"
+          }
+        }
+      },
+      "categories": [
+        "agent"
+      ]
+    },
+    {
+      "name": "subagent-tree",
+      "type": "registry:component",
+      "title": "Subagent Tree",
+      "description": "Nested, collapsible tree of parallel subagents with live status, activity and timers. Full arrow-key navigation.",
+      "author": "jju1s <https://github.com/cig13zs>",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/agent-ui/components/subagent-tree.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "css": {
+        "@keyframes agent-ui-in": {
+          "from": {
+            "opacity": "0",
+            "transform": "translateY(4px)"
+          }
+        }
+      },
+      "categories": [
+        "agent"
+      ]
+    },
+    {
+      "name": "usage-meter",
+      "type": "registry:component",
+      "title": "Usage Meter",
+      "description": "Tokens in and out, cache hits, cost and percent of a rate limit with a reset countdown. Compact and expanded variants.",
+      "author": "jju1s <https://github.com/cig13zs>",
+      "files": [
+        {
+          "path": "registry/agent-ui/components/usage-meter.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "agent"
+      ]
+    },
+    {
+      "name": "diff-summary",
+      "type": "registry:component",
+      "title": "Diff Summary",
+      "description": "Files changed with +/- counts and diffstat blocks; each row expands into a mini diff with line numbers.",
+      "author": "jju1s <https://github.com/cig13zs>",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/agent-ui/components/diff-summary.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "css": {
+        "@keyframes agent-ui-in": {
+          "from": {
+            "opacity": "0",
+            "transform": "translateY(4px)"
+          }
+        }
+      },
+      "categories": [
+        "agent"
+      ]
+    },
+    {
+      "name": "use-agent-run",
+      "type": "registry:hook",
+      "title": "useAgentRun",
+      "description": "Headless hook that turns a stream of agent-ui events into props for every component. Includes the event types and a pure reducer.",
+      "author": "jju1s <https://github.com/cig13zs>",
+      "files": [
+        {
+          "path": "registry/agent-ui/hooks/use-agent-run.ts",
+          "type": "registry:hook"
+        }
+      ],
+      "categories": [
+        "agent"
+      ]
+    },
+    {
+      "name": "agent-run-ai-sdk",
+      "type": "registry:lib",
+      "title": "AI SDK adapter",
+      "description": "Turns Vercel AI SDK useChat messages into agent-ui events.",
+      "author": "jju1s <https://github.com/cig13zs>",
+      "registryDependencies": [
+        "https://cig13zs.github.io/agent-ui/r/use-agent-run.json"
+      ],
+      "files": [
+        {
+          "path": "registry/agent-ui/lib/agent-run-ai-sdk.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "categories": [
+        "agent"
+      ]
+    },
+    {
+      "name": "agent-run-anthropic",
+      "type": "registry:lib",
+      "title": "Claude stream adapter",
+      "description": "Turns raw Claude Messages API stream events into agent-ui events.",
+      "author": "jju1s <https://github.com/cig13zs>",
+      "registryDependencies": [
+        "https://cig13zs.github.io/agent-ui/r/use-agent-run.json"
+      ],
+      "files": [
+        {
+          "path": "registry/agent-ui/lib/agent-run-anthropic.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "categories": [
+        "agent"
+      ]
+    },
+    {
+      "name": "agent-run-openai",
+      "type": "registry:lib",
+      "title": "OpenAI stream adapter",
+      "description": "Turns OpenAI Chat Completions chunks or Responses API events into agent-ui events.",
+      "author": "jju1s <https://github.com/cig13zs>",
+      "registryDependencies": [
+        "https://cig13zs.github.io/agent-ui/r/use-agent-run.json"
+      ],
+      "files": [
+        {
+          "path": "registry/agent-ui/lib/agent-run-openai.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "categories": [
+        "agent"
+      ]
+    },
+    {
+      "name": "agent-ui",
+      "type": "registry:item",
+      "title": "agent-ui (everything)",
+      "description": "All six components and the useAgentRun hook.",
+      "author": "jju1s <https://github.com/cig13zs>",
+      "registryDependencies": [
+        "https://cig13zs.github.io/agent-ui/r/agent-run-card.json",
+        "https://cig13zs.github.io/agent-ui/r/tool-timeline.json",
+        "https://cig13zs.github.io/agent-ui/r/approval-prompt.json",
+        "https://cig13zs.github.io/agent-ui/r/subagent-tree.json",
+        "https://cig13zs.github.io/agent-ui/r/usage-meter.json",
+        "https://cig13zs.github.io/agent-ui/r/diff-summary.json",
+        "https://cig13zs.github.io/agent-ui/r/use-agent-run.json"
+      ],
+      "files": []
+    }
+  ]
+}

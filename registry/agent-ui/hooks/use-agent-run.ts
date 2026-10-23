@@ -22,7 +22,7 @@ export type AgentEvent = Stamp &
     | { type: "run.resume" }
     | { type: "run.end"; status?: "done" | "failed"; error?: string }
     | { type: "step.start"; id?: string; label: string; kind?: ToolKind }
-    | { type: "step.end"; id?: string; status?: "done" | "failed" }
+    | { type: "step.end"; id?: string; status?: "done" | "failed"; summary?: string }
     | {
         type: "tool.start"
         id: string
@@ -238,7 +238,10 @@ export function reduceAgentRun(state: AgentRunState, event: AgentEvent): AgentRu
     case "step.end": {
       const target = event.id ?? [...state.steps].reverse().find((s) => s.status === "running")?.id
       if (!target) return state
-      return { ...state, steps: patch(state.steps, target, (s) => ({ ...s, status: event.status ?? "done", endedAt: at })) }
+      return {
+        ...state,
+        steps: patch(state.steps, target, (s) => ({ ...s, label: event.summary ?? s.label, status: event.status ?? "done", endedAt: at })),
+      }
     }
     case "tool.start": {
       if (state.tools.some((t) => t.id === event.id)) return state
