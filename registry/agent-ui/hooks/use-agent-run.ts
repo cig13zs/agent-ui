@@ -614,7 +614,7 @@ export function useAgentRun(options: UseAgentRunOptions = {}): AgentRun {
 /* ------------------------------------------------------------------ */
 
 const kindPatterns: Array<[ToolKind, RegExp]> = [
-  ["edit", /edit|write|patch|replace|create_file|apply|insert|update_file|str_replace/i],
+  ["edit", /edit|write|patch|replace|create_file|apply|insert|update_file|str_replace|delete|remove|rename|move|mkdir/i],
   ["web", /web|fetch|browse|http|url|scrape/i],
   ["read", /read|view|cat|open_file|get_file/i],
   ["search", /grep|search|find|glob|list|ls\b|lookup|query/i],
