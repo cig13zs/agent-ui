@@ -25,7 +25,7 @@ export function useDemoRun(options: { autoApproveMs?: number | null; loop?: bool
 }
 
 /** Keeps a scroll container pinned to the bottom while new rows arrive, unless the reader scrolled up. */
-function useStickToBottom<T extends HTMLElement>(dep: unknown) {
+export function useStickToBottom<T extends HTMLElement>(dep: unknown) {
   const ref = React.useRef<T>(null)
   const pinned = React.useRef(true)
   React.useEffect(() => {
@@ -105,12 +105,14 @@ export function RunConsole({
   className,
   autoApproveMs,
   loop,
+  speed,
 }: {
   className?: string
   autoApproveMs?: number | null
   loop?: boolean
+  speed?: number
 }) {
-  const { run, player } = useDemoRun({ autoApproveMs, loop })
+  const { run, player } = useDemoRun({ autoApproveMs, loop, speed })
   const timelineRef = useStickToBottom<HTMLDivElement>(run.timeline.length + (run.timeline.at(-1)?.output?.length ?? 0))
   const finished = player.state === "finished" || player.state === "stopped"
   const additions = run.files.reduce((n, f) => n + f.additions, 0)
