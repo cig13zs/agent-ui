@@ -107,9 +107,13 @@ function useNow(active: boolean, interval = 1000) {
   const [now, setNow] = React.useState(() => Date.now())
   React.useEffect(() => {
     if (!active) return
-    setNow(Date.now())
-    const id = setInterval(() => setNow(Date.now()), interval)
-    return () => clearInterval(id)
+    const tick = () => setNow(Date.now())
+    const first = setTimeout(tick, 0)
+    const id = setInterval(tick, interval)
+    return () => {
+      clearTimeout(first)
+      clearInterval(id)
+    }
   }, [active, interval])
   return now
 }

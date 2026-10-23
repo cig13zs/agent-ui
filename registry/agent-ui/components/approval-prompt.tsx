@@ -196,7 +196,7 @@ export function ApprovalPrompt({
 
       {command && (
         <div className="mx-3.5 mt-2.5 flex items-start gap-2 rounded-md border border-border bg-muted/50 py-2 pr-1.5 pl-3">
-          <code className="min-w-0 flex-1 font-mono text-[13px] leading-5 break-all">
+          <code className="min-w-0 flex-1 font-mono text-[13px] leading-5 break-words">
             {cwd && <span className="text-muted-foreground select-none">{cwd} </span>}
             <span className="text-muted-foreground select-none">$ </span>
             {command}

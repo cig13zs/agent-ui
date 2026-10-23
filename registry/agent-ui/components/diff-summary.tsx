@@ -84,41 +84,34 @@ function MiniDiff({ diff, maxLines }: { diff: string; maxLines: number }) {
       style={{ maxHeight: `${maxLines * 1.25 + 0.5}rem` }}
       className="overflow-auto border-t border-border bg-muted/30 py-1 font-mono text-xs leading-5 outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset"
     >
-      <table className="w-full border-collapse">
-        <tbody>
-          {lines.map((l, i) =>
-            l.kind === "hunk" ? (
-              <tr key={i} className="text-sky-700 dark:text-sky-300">
-                <td colSpan={3} className="px-3 py-0.5 text-[11px] opacity-80">
-                  {l.text}
-                </td>
-              </tr>
-            ) : (
-              <tr
-                key={i}
+      <div className="w-max min-w-full">
+        {lines.map((l, i) =>
+          l.kind === "hunk" ? (
+            <div key={i} className="px-3 py-0.5 text-[11px] whitespace-pre text-sky-700 opacity-80 dark:text-sky-300">
+              {l.text}
+            </div>
+          ) : (
+            <div
+              key={i}
+              className={cx("flex", l.kind === "add" && "bg-emerald-500/10", l.kind === "del" && "bg-red-500/10")}
+            >
+              <span className="w-10 shrink-0 pr-1.5 text-right text-muted-foreground/60 tabular-nums select-none">{l.oldNo ?? ""}</span>
+              <span className="w-9 shrink-0 pr-2 text-right text-muted-foreground/60 tabular-nums select-none">{l.newNo ?? ""}</span>
+              <span
                 className={cx(
-                  l.kind === "add" && "bg-emerald-500/10",
-                  l.kind === "del" && "bg-red-500/10",
+                  "pr-4 whitespace-pre",
+                  l.kind === "add" && "text-emerald-800 dark:text-emerald-200",
+                  l.kind === "del" && "text-red-800 dark:text-red-200",
+                  l.kind === "ctx" && "text-muted-foreground",
                 )}
               >
-                <td className="w-9 pr-1 text-right text-muted-foreground/60 tabular-nums select-none">{l.oldNo ?? ""}</td>
-                <td className="w-9 pr-2 text-right text-muted-foreground/60 tabular-nums select-none">{l.newNo ?? ""}</td>
-                <td
-                  className={cx(
-                    "pr-3 whitespace-pre",
-                    l.kind === "add" && "text-emerald-800 dark:text-emerald-200",
-                    l.kind === "del" && "text-red-800 dark:text-red-200",
-                    l.kind === "ctx" && "text-muted-foreground",
-                  )}
-                >
-                  <span className="mr-2 select-none opacity-60">{l.kind === "add" ? "+" : l.kind === "del" ? "-" : " "}</span>
-                  {l.text}
-                </td>
-              </tr>
-            ),
-          )}
-        </tbody>
-      </table>
+                <span className="mr-2 select-none opacity-60">{l.kind === "add" ? "+" : l.kind === "del" ? "-" : " "}</span>
+                {l.text}
+              </span>
+            </div>
+          ),
+        )}
+      </div>
     </div>
   )
 }
@@ -139,10 +132,10 @@ export function DiffSummary({
   return (
     <section
       aria-label={title}
-      className={cx("overflow-hidden rounded-xl border border-border bg-card text-card-foreground shadow-sm", className)}
+      className={cx("flex flex-col overflow-hidden rounded-xl border border-border bg-card text-card-foreground shadow-sm", className)}
       {...props}
     >
-      <header className="flex items-center gap-3 px-4 py-3">
+      <header className="flex shrink-0 items-center gap-3 px-4 py-3">
         <h3 className="text-sm font-medium">{title}</h3>
         <span className="text-xs text-muted-foreground">
           {files.length} {files.length === 1 ? "file" : "files"}
@@ -153,7 +146,7 @@ export function DiffSummary({
           <Blocks additions={additions} deletions={deletions} />
         </span>
       </header>
-      <ul className="border-t border-border">
+      <ul className="min-h-0 flex-1 overflow-auto border-t border-border">
         {files.map((f, i) => {
           const status = statusBadge[f.status ?? "modified"]
           const slash = f.path.lastIndexOf("/")

@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>agent-ui: components for agent runs</title>
+    <meta name="description" content="Copy-paste React components for showing an agent run: current step, tool calls, approvals, subagents, token usage and diffs. shadcn registry, Tailwind v4, MIT." />
+    <meta property="og:title" content="agent-ui" />
+    <meta property="og:description" content="Show the run, not just the chat. Six React components for agent runs." />
+    <meta property="og:image" content="https://cig13zs.github.io/agent-ui/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="/agent-ui/favicon.svg" />
+    <script>
+      try {
+        var t = new URLSearchParams(location.search).get("theme") || localStorage.getItem("agent-ui-theme")
+        if (t === "light") document.documentElement.classList.remove("dark")
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

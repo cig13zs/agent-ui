@@ -455,7 +455,7 @@ export function selectCard(state: AgentRunState): AgentRunCardData {
     status: state.status,
     title: state.title,
     model: state.model,
-    currentStep: pending ? (pending.title ?? "Waiting for approval") : running,
+    currentStep: pending ? "Waiting for approval" : running,
     step: step || undefined,
     totalSteps: state.totalSteps !== undefined ? Math.max(state.totalSteps, step) : undefined,
     startedAt: state.startedAt !== undefined ? state.startedAt + state.pausedMs : undefined,
