@@ -139,7 +139,7 @@ function Single({ view }: { view: string }) {
     case "usage-meter":
       return (
         <Stage status={run.state.status} width={440}>
-          <div className="flex flex-col items-start gap-3">
+          <div className="flex flex-col items-start gap-3" style={{ height: 312 }}>
             <UsageMeter variant="compact" {...run.usage} />
             <UsageMeter {...run.usage} className="w-full" />
           </div>
